@@ -1,11 +1,9 @@
 {
   "expo": {
-    "name": "myshopping",
-    "slug": "myshopping",
+    "name": "my-shopping-list",
+    "slug": "my-shopping-list",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "plugins": [
       [
         "expo-image-picker",
