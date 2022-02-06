@@ -1,4 +1,4 @@
-package com.myshopping;
+package com.mssmapps.myshoppinglist;
 
 import android.os.Bundle;
 
