@@ -1,33 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FlatList } from 'react-native';
 
 import { Container, PhotoInfo } from './styles';
 import { Header } from '../../components/Header';
 import { Photo } from '../../components/Photo';
-import { File } from '../../components/File';
-
-import { photosData } from '../../utils/photo.data';
+import { File, FileProps } from '../../components/File';
 
 export function Receipts() {
+  const [photos, setPhotos] = useState<FileProps[]>([]);
+
   return (
     <Container>
-      <Header title="Comprovantes" />
+      <Header title='Comprovantes' />
 
-      <Photo uri="" />
+      <Photo uri='' />
 
-      <PhotoInfo>
-        Informações da foto
-      </PhotoInfo>
+      <PhotoInfo>Informações da foto</PhotoInfo>
 
       <FlatList
-        data={photosData}
-        keyExtractor={item => item.name}
+        data={photos}
+        keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
-          <File
-            data={item}
-            onShow={() => { }}
-            onDelete={() => { }}
-          />
+          <File data={item} onShow={() => {}} onDelete={() => {}} />
         )}
         contentContainerStyle={{ paddingBottom: 100 }}
         showsVerticalScrollIndicator={false}
