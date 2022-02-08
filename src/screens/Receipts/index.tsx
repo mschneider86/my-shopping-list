@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import storage from '@react-native-firebase/storage';
+
 import { FlatList } from 'react-native';
 
 import { Container, PhotoInfo } from './styles';
@@ -8,6 +10,24 @@ import { File, FileProps } from '../../components/File';
 
 export function Receipts() {
   const [photos, setPhotos] = useState<FileProps[]>([]);
+
+  useEffect(() => {
+    storage()
+      .ref('images')
+      .list()
+      .then((result) => {
+        const files: FileProps[] = [];
+
+        result.items.forEach((file) => {
+          files.push({
+            name: file.name,
+            path: file.fullPath,
+          });
+        });
+
+        setPhotos(files);
+      });
+  }, []);
 
   return (
     <Container>
