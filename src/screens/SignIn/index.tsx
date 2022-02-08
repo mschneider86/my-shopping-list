@@ -23,8 +23,16 @@ export function SignIn() {
         Alert.alert('Usuário criado com sucesso');
       })
       .catch((error) => {
-        Alert.alert('Oops...', 'Erro ao criar usuário');
         console.error(error);
+        if (error.code === 'auth/email-already-in-use') {
+          Alert.alert('E-mail não disponível. Favor escolher outro!');
+        } else if (error.code === 'auth/invalid-email') {
+          Alert.alert('E-mail inválido!');
+        } else if (error.code === 'auth/weak-password') {
+          Alert.alert('A senha deve ter no mínimo 6 dígitos');
+        } else {
+          Alert.alert('Oops...', 'Erro ao criar usuário');
+        }
       });
   }
 
