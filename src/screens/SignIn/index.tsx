@@ -16,6 +16,11 @@ export function SignIn() {
     console.log(user);
   }
 
+  async function handleSignInWithEmailAndPassword() {
+    const { user } = await auth().signInWithEmailAndPassword(email, password);
+    console.log(user);
+  }
+
   function handleCreateUserAccount() {
     auth()
       .createUserWithEmailAndPassword(email, password)
@@ -49,7 +54,7 @@ export function SignIn() {
 
       <Input placeholder='senha' secureTextEntry onChangeText={setPassword} />
 
-      <Button title='Entrar' onPress={() => {}} />
+      <Button title='Entrar' onPress={handleSignInWithEmailAndPassword} />
 
       <Account>
         <ButtonText title='Recuperar senha' onPress={() => {}} />
