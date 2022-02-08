@@ -57,7 +57,7 @@ export function Upload() {
 
     uploadTask
       .then(async () => {
-        const imageUrl = reference.getDownloadURL();
+        const imageUrl = await reference.getDownloadURL();
         //TODO: save image on a local database
         console.log(imageUrl);
         Alert.alert('Upload concluído com sucesso');
